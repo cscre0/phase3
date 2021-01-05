@@ -37,7 +37,7 @@ public interface BaseService<T, ID> {
 
     /**
      * 批量删除
-     * @param list
+     * @param ids
      * @return
      */
     int deleteBatch(List<ID> ids);
