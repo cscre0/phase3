@@ -17,7 +17,6 @@ public class BaseController<T, ID> {
     @Autowired
     private BaseService<T, ID> baseService;
 
-
     @GetMapping
     public AxiosResult<PageVo<T>> findPage(@RequestParam(defaultValue = "1") int currentPage,
                                            @RequestParam(defaultValue = "5") int pageSize) {

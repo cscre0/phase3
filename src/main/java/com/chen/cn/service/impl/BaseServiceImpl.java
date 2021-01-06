@@ -5,6 +5,7 @@ import com.chen.cn.service.BaseService;
 import com.chen.cn.vo.PageVo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  * @Date 2021/1/2 16:55
  */
 
+@Service
 @Transactional
 public class BaseServiceImpl<T,ID> implements BaseService<T,ID> {
 

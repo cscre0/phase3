@@ -23,50 +23,55 @@ public class AxiosResult<T> {
     private T data;
 
     /*私有构造方法*/
-    private AxiosResult(AxiosStatus axiosStatus) {
-        AxiosResult axiosResult = new AxiosResult(axiosStatus);
-        axiosResult.setStatus(axiosStatus.getStatus());
-        axiosResult.setMessage(axiosStatus.getMessage());
+    private AxiosResult() {
     }
 
     public static AxiosResult success() {
-        return new AxiosResult(AxiosStatus.SUCCESS);
+        return setData(AxiosStatus.SUCCESS, null);
     }
 
     public static AxiosResult success(AxiosStatus axiosStatus) {
-        return new AxiosResult(axiosStatus);
+        return setData(axiosStatus, null);
     }
 
     public static AxiosResult fail() {
-        return new AxiosResult(AxiosStatus.FAILURE);
+        return setData(AxiosStatus.FAILURE,null);
     }
 
     public static AxiosResult fail(AxiosStatus axiosStatus) {
-        return new AxiosResult(axiosStatus);
+        return setData(axiosStatus, null);
     }
 
     public static <T> AxiosResult<T> success(T data) {
-        AxiosResult success = success();
-        success.setData(data);
-        return success;
+        return setData(AxiosStatus.SUCCESS, data);
     }
 
     public static <T> AxiosResult<T> success(T data, AxiosStatus axiosStatus) {
-        AxiosResult success = success(axiosStatus);
-        success.setData(data);
-        return success;
+        return setData(axiosStatus, data);
     }
 
     public static <T> AxiosResult<T> fail(T data) {
-        AxiosResult fail = fail();
-        fail.setData(data);
-        return fail;
+        return setData(AxiosStatus.FAILURE, data);
     }
 
     public static <T> AxiosResult<T> fail(T data, AxiosStatus axiosStatus) {
-        AxiosResult fail = fail(axiosStatus);
-        fail.setData(data);
-        return fail;
+        return setData(axiosStatus, data);
+    }
+
+    /**
+     * 封装数据公共方法
+     *
+     * @param axiosStatus
+     * @param data
+     * @param <T>
+     * @return
+     */
+    private static <T> AxiosResult<T> setData(AxiosStatus axiosStatus, T data) {
+        AxiosResult<T> axiosResult = new AxiosResult<>();
+        axiosResult.setData(data);
+        axiosResult.setStatus(axiosStatus.getStatus());
+        axiosResult.setMessage(axiosStatus.getMessage());
+        return axiosResult;
     }
 
 

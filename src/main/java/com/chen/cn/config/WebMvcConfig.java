@@ -22,6 +22,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .allowedMethods("*")
                 .allowCredentials(true);
     }
+
 /* @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginIntercepter()).addPathPatterns("/**")
