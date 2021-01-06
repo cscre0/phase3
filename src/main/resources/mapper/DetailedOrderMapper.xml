@@ -1,41 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chen.cn.mapper.DetailedOrderMapper">
-  <resultMap id="BaseResultMap" type="com.chen.cn.entity.DetailedOrder">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="order_id" jdbcType="BIGINT" property="orderId" />
-    <result column="business_type" jdbcType="VARCHAR" property="businessType" />
-    <result column="order_action" jdbcType="VARCHAR" property="orderAction" />
-    <result column="customer_id" jdbcType="BIGINT" property="customerId" />
-    <result column="cart_id" jdbcType="BIGINT" property="cartId" />
-    <result column="check_id" jdbcType="BIGINT" property="checkId" />
-    <result column="check_time" jdbcType="TIMESTAMP" property="checkTime" />
-    <result column="check_mode" jdbcType="VARCHAR" property="checkMode" />
-    <result column="check_suggestion" jdbcType="VARCHAR" property="checkSuggestion" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="create_id" jdbcType="BIGINT" property="createId" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="update_id" jdbcType="BIGINT" property="updateId" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chen.cn.mapper.DetailedOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.chen.cn.entity.DetailedOrder" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="customer_id" property="customerId" jdbcType="BIGINT" />
+    <result column="cart_id" property="cartId" jdbcType="BIGINT" />
+    <result column="check_id" property="checkId" jdbcType="BIGINT" />
+    <result column="check_time" property="checkTime" jdbcType="TIMESTAMP" />
+    <result column="check_mode" property="checkMode" jdbcType="VARCHAR" />
+    <result column="check_suggestion" property="checkSuggestion" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_id" property="createId" jdbcType="BIGINT" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="update_id" property="updateId" jdbcType="BIGINT" />
   </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -46,25 +44,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -75,205 +73,185 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List">
-    id, order_id, business_type, order_action, customer_id, cart_id, check_id, check_time, 
-    check_mode, check_suggestion, create_time, create_id, update_time, update_id
+  <sql id="Base_Column_List" >
+    id, order_id, customer_id, cart_id, check_id, check_time, check_mode, check_suggestion, 
+    create_time, create_id, update_time, update_id
   </sql>
-  <select id="selectByExample" parameterType="com.chen.cn.entity.DetailedOrderExample" resultMap="BaseResultMap">
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chen.cn.entity.DetailedOrderExample" >
     select
-    <if test="distinct">
+    <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
     from detailed_order
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null">
+    <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from detailed_order
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from detailed_order
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.chen.cn.entity.DetailedOrderExample">
+  <delete id="deleteByExample" parameterType="com.chen.cn.entity.DetailedOrderExample" >
     delete from detailed_order
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.chen.cn.entity.DetailedOrder">
-    insert into detailed_order (id, order_id, business_type, 
-      order_action, customer_id, cart_id, 
-      check_id, check_time, check_mode, 
-      check_suggestion, create_time, create_id, 
-      update_time, update_id)
-    values (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{businessType,jdbcType=VARCHAR}, 
-      #{orderAction,jdbcType=VARCHAR}, #{customerId,jdbcType=BIGINT}, #{cartId,jdbcType=BIGINT}, 
-      #{checkId,jdbcType=BIGINT}, #{checkTime,jdbcType=TIMESTAMP}, #{checkMode,jdbcType=VARCHAR}, 
-      #{checkSuggestion,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createId,jdbcType=BIGINT}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{updateId,jdbcType=BIGINT})
+  <insert id="insert" parameterType="com.chen.cn.entity.DetailedOrder" >
+    insert into detailed_order (id, order_id, customer_id, 
+      cart_id, check_id, check_time, 
+      check_mode, check_suggestion, create_time, 
+      create_id, update_time, update_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{customerId,jdbcType=BIGINT}, 
+      #{cartId,jdbcType=BIGINT}, #{checkId,jdbcType=BIGINT}, #{checkTime,jdbcType=TIMESTAMP}, 
+      #{checkMode,jdbcType=VARCHAR}, #{checkSuggestion,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createId,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}, #{updateId,jdbcType=BIGINT}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.chen.cn.entity.DetailedOrder">
+  <insert id="insertSelective" parameterType="com.chen.cn.entity.DetailedOrder" >
     insert into detailed_order
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         id,
       </if>
-      <if test="orderId != null">
+      <if test="orderId != null" >
         order_id,
       </if>
-      <if test="businessType != null">
-        business_type,
-      </if>
-      <if test="orderAction != null">
-        order_action,
-      </if>
-      <if test="customerId != null">
+      <if test="customerId != null" >
         customer_id,
       </if>
-      <if test="cartId != null">
+      <if test="cartId != null" >
         cart_id,
       </if>
-      <if test="checkId != null">
+      <if test="checkId != null" >
         check_id,
       </if>
-      <if test="checkTime != null">
+      <if test="checkTime != null" >
         check_time,
       </if>
-      <if test="checkMode != null">
+      <if test="checkMode != null" >
         check_mode,
       </if>
-      <if test="checkSuggestion != null">
+      <if test="checkSuggestion != null" >
         check_suggestion,
       </if>
-      <if test="createTime != null">
+      <if test="createTime != null" >
         create_time,
       </if>
-      <if test="createId != null">
+      <if test="createId != null" >
         create_id,
       </if>
-      <if test="updateTime != null">
+      <if test="updateTime != null" >
         update_time,
       </if>
-      <if test="updateId != null">
+      <if test="updateId != null" >
         update_id,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="orderId != null">
+      <if test="orderId != null" >
         #{orderId,jdbcType=BIGINT},
       </if>
-      <if test="businessType != null">
-        #{businessType,jdbcType=VARCHAR},
-      </if>
-      <if test="orderAction != null">
-        #{orderAction,jdbcType=VARCHAR},
-      </if>
-      <if test="customerId != null">
+      <if test="customerId != null" >
         #{customerId,jdbcType=BIGINT},
       </if>
-      <if test="cartId != null">
+      <if test="cartId != null" >
         #{cartId,jdbcType=BIGINT},
       </if>
-      <if test="checkId != null">
+      <if test="checkId != null" >
         #{checkId,jdbcType=BIGINT},
       </if>
-      <if test="checkTime != null">
+      <if test="checkTime != null" >
         #{checkTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="checkMode != null">
+      <if test="checkMode != null" >
         #{checkMode,jdbcType=VARCHAR},
       </if>
-      <if test="checkSuggestion != null">
+      <if test="checkSuggestion != null" >
         #{checkSuggestion,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
+      <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createId != null">
+      <if test="createId != null" >
         #{createId,jdbcType=BIGINT},
       </if>
-      <if test="updateTime != null">
+      <if test="updateTime != null" >
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateId != null">
+      <if test="updateId != null" >
         #{updateId,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.chen.cn.entity.DetailedOrderExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.chen.cn.entity.DetailedOrderExample" resultType="java.lang.Integer" >
     select count(*) from detailed_order
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map">
+  <update id="updateByExampleSelective" parameterType="map" >
     update detailed_order
-    <set>
-      <if test="record.id != null">
+    <set >
+      <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.orderId != null">
+      <if test="record.orderId != null" >
         order_id = #{record.orderId,jdbcType=BIGINT},
       </if>
-      <if test="record.businessType != null">
-        business_type = #{record.businessType,jdbcType=VARCHAR},
-      </if>
-      <if test="record.orderAction != null">
-        order_action = #{record.orderAction,jdbcType=VARCHAR},
-      </if>
-      <if test="record.customerId != null">
+      <if test="record.customerId != null" >
         customer_id = #{record.customerId,jdbcType=BIGINT},
       </if>
-      <if test="record.cartId != null">
+      <if test="record.cartId != null" >
         cart_id = #{record.cartId,jdbcType=BIGINT},
       </if>
-      <if test="record.checkId != null">
+      <if test="record.checkId != null" >
         check_id = #{record.checkId,jdbcType=BIGINT},
       </if>
-      <if test="record.checkTime != null">
+      <if test="record.checkTime != null" >
         check_time = #{record.checkTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.checkMode != null">
+      <if test="record.checkMode != null" >
         check_mode = #{record.checkMode,jdbcType=VARCHAR},
       </if>
-      <if test="record.checkSuggestion != null">
+      <if test="record.checkSuggestion != null" >
         check_suggestion = #{record.checkSuggestion,jdbcType=VARCHAR},
       </if>
-      <if test="record.createTime != null">
+      <if test="record.createTime != null" >
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.createId != null">
+      <if test="record.createId != null" >
         create_id = #{record.createId,jdbcType=BIGINT},
       </if>
-      <if test="record.updateTime != null">
+      <if test="record.updateTime != null" >
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.updateId != null">
+      <if test="record.updateId != null" >
         update_id = #{record.updateId,jdbcType=BIGINT},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map">
+  <update id="updateByExample" parameterType="map" >
     update detailed_order
     set id = #{record.id,jdbcType=BIGINT},
       order_id = #{record.orderId,jdbcType=BIGINT},
-      business_type = #{record.businessType,jdbcType=VARCHAR},
-      order_action = #{record.orderAction,jdbcType=VARCHAR},
       customer_id = #{record.customerId,jdbcType=BIGINT},
       cart_id = #{record.cartId,jdbcType=BIGINT},
       check_id = #{record.checkId,jdbcType=BIGINT},
@@ -284,60 +262,52 @@
       create_id = #{record.createId,jdbcType=BIGINT},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       update_id = #{record.updateId,jdbcType=BIGINT}
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.chen.cn.entity.DetailedOrder">
+  <update id="updateByPrimaryKeySelective" parameterType="com.chen.cn.entity.DetailedOrder" >
     update detailed_order
-    <set>
-      <if test="orderId != null">
+    <set >
+      <if test="orderId != null" >
         order_id = #{orderId,jdbcType=BIGINT},
       </if>
-      <if test="businessType != null">
-        business_type = #{businessType,jdbcType=VARCHAR},
-      </if>
-      <if test="orderAction != null">
-        order_action = #{orderAction,jdbcType=VARCHAR},
-      </if>
-      <if test="customerId != null">
+      <if test="customerId != null" >
         customer_id = #{customerId,jdbcType=BIGINT},
       </if>
-      <if test="cartId != null">
+      <if test="cartId != null" >
         cart_id = #{cartId,jdbcType=BIGINT},
       </if>
-      <if test="checkId != null">
+      <if test="checkId != null" >
         check_id = #{checkId,jdbcType=BIGINT},
       </if>
-      <if test="checkTime != null">
+      <if test="checkTime != null" >
         check_time = #{checkTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="checkMode != null">
+      <if test="checkMode != null" >
         check_mode = #{checkMode,jdbcType=VARCHAR},
       </if>
-      <if test="checkSuggestion != null">
+      <if test="checkSuggestion != null" >
         check_suggestion = #{checkSuggestion,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
+      <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createId != null">
+      <if test="createId != null" >
         create_id = #{createId,jdbcType=BIGINT},
       </if>
-      <if test="updateTime != null">
+      <if test="updateTime != null" >
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateId != null">
+      <if test="updateId != null" >
         update_id = #{updateId,jdbcType=BIGINT},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.chen.cn.entity.DetailedOrder">
+  <update id="updateByPrimaryKey" parameterType="com.chen.cn.entity.DetailedOrder" >
     update detailed_order
     set order_id = #{orderId,jdbcType=BIGINT},
-      business_type = #{businessType,jdbcType=VARCHAR},
-      order_action = #{orderAction,jdbcType=VARCHAR},
       customer_id = #{customerId,jdbcType=BIGINT},
       cart_id = #{cartId,jdbcType=BIGINT},
       check_id = #{checkId,jdbcType=BIGINT},

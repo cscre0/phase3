@@ -305,6 +305,146 @@ public class OrderExample {
             return (Criteria) this;
         }
 
+        public Criteria andBusinessTypeIsNull() {
+            addCriterion("business_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeIsNotNull() {
+            addCriterion("business_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeEqualTo(String value) {
+            addCriterion("business_type =", value, "businessType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeNotEqualTo(String value) {
+            addCriterion("business_type <>", value, "businessType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeGreaterThan(String value) {
+            addCriterion("business_type >", value, "businessType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("business_type >=", value, "businessType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeLessThan(String value) {
+            addCriterion("business_type <", value, "businessType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeLessThanOrEqualTo(String value) {
+            addCriterion("business_type <=", value, "businessType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeLike(String value) {
+            addCriterion("business_type like", value, "businessType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeNotLike(String value) {
+            addCriterion("business_type not like", value, "businessType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeIn(List<String> values) {
+            addCriterion("business_type in", values, "businessType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeNotIn(List<String> values) {
+            addCriterion("business_type not in", values, "businessType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeBetween(String value1, String value2) {
+            addCriterion("business_type between", value1, value2, "businessType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeNotBetween(String value1, String value2) {
+            addCriterion("business_type not between", value1, value2, "businessType");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderActionIsNull() {
+            addCriterion("order_action is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderActionIsNotNull() {
+            addCriterion("order_action is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderActionEqualTo(String value) {
+            addCriterion("order_action =", value, "orderAction");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderActionNotEqualTo(String value) {
+            addCriterion("order_action <>", value, "orderAction");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderActionGreaterThan(String value) {
+            addCriterion("order_action >", value, "orderAction");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderActionGreaterThanOrEqualTo(String value) {
+            addCriterion("order_action >=", value, "orderAction");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderActionLessThan(String value) {
+            addCriterion("order_action <", value, "orderAction");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderActionLessThanOrEqualTo(String value) {
+            addCriterion("order_action <=", value, "orderAction");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderActionLike(String value) {
+            addCriterion("order_action like", value, "orderAction");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderActionNotLike(String value) {
+            addCriterion("order_action not like", value, "orderAction");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderActionIn(List<String> values) {
+            addCriterion("order_action in", values, "orderAction");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderActionNotIn(List<String> values) {
+            addCriterion("order_action not in", values, "orderAction");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderActionBetween(String value1, String value2) {
+            addCriterion("order_action between", value1, value2, "orderAction");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderActionNotBetween(String value1, String value2) {
+            addCriterion("order_action not between", value1, value2, "orderAction");
+            return (Criteria) this;
+        }
+
         public Criteria andDeliveryWayIsNull() {
             addCriterion("delivery_way is null");
             return (Criteria) this;

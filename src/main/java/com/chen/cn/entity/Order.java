@@ -9,6 +9,10 @@ public class Order {
 
     private String orderPayment;
 
+    private String businessType;
+
+    private String orderAction;
+
     private String deliveryWay;
 
     private String orderMode;
@@ -59,6 +63,22 @@ public class Order {
 
     public void setOrderPayment(String orderPayment) {
         this.orderPayment = orderPayment == null ? null : orderPayment.trim();
+    }
+
+    public String getBusinessType() {
+        return businessType;
+    }
+
+    public void setBusinessType(String businessType) {
+        this.businessType = businessType == null ? null : businessType.trim();
+    }
+
+    public String getOrderAction() {
+        return orderAction;
+    }
+
+    public void setOrderAction(String orderAction) {
+        this.orderAction = orderAction == null ? null : orderAction.trim();
     }
 
     public String getDeliveryWay() {

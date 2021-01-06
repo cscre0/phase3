@@ -7,10 +7,6 @@ public class DetailedOrder {
 
     private Long orderId;
 
-    private String businessType;
-
-    private String orderAction;
-
     private Long customerId;
 
     private Long cartId;
@@ -45,22 +41,6 @@ public class DetailedOrder {
 
     public void setOrderId(Long orderId) {
         this.orderId = orderId;
-    }
-
-    public String getBusinessType() {
-        return businessType;
-    }
-
-    public void setBusinessType(String businessType) {
-        this.businessType = businessType == null ? null : businessType.trim();
-    }
-
-    public String getOrderAction() {
-        return orderAction;
-    }
-
-    public void setOrderAction(String orderAction) {
-        this.orderAction = orderAction == null ? null : orderAction.trim();
     }
 
     public Long getCustomerId() {
