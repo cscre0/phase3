@@ -22,7 +22,7 @@ public class AxiosResult<T> {
 
     private T data;
 
-    /*私有构造方法*/
+    /*私有构造*/
     private AxiosResult() {
     }
 

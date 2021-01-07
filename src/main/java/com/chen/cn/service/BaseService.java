@@ -66,13 +66,6 @@ public interface BaseService<T, ID> {
      */
     PageVo<T> findPage();
 
-    /**
-     * 分页条件查询
-     *
-     * @param example
-     * @return
-     */
-    PageVo<T> findPage(Object example);
 
     /**
      * 封装分页查询数据

@@ -2,12 +2,14 @@ package com.chen.cn.service.impl;
 
 import com.chen.cn.mapper.BaseMapper;
 import com.chen.cn.service.BaseService;
+import com.chen.cn.utils.ReflectionUtils;
 import com.chen.cn.vo.PageVo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -24,12 +26,17 @@ public class BaseServiceImpl<T,ID> implements BaseService<T,ID> {
 
     @Override
     public int addOne(T t) {
+        ReflectionUtils.invokeMethod(t,"setDate",null, null);
+        System.out.println("add: "+t.toString());
         return baseMapper.insert(t);
     }
 
     @Override
     public int addBatch(List<T> list) {
-        list.forEach(i->baseMapper.insert(i));
+        list.forEach(i->{
+            baseMapper.insert(i);
+            ReflectionUtils.invokeMethod(i,"setDate",null, null);
+        });
         return 1;
     }
 
@@ -40,12 +47,16 @@ public class BaseServiceImpl<T,ID> implements BaseService<T,ID> {
 
     @Override
     public int deleteBatch(List<ID> ids) {
-        ids.forEach(i->baseMapper.deleteByPrimaryKey(i));
+        ids.forEach(i->{
+            baseMapper.deleteByPrimaryKey(i);
+        });
         return 1;
     }
 
     @Override
     public int updateOne(T t) {
+        ReflectionUtils.invokeMethod(t,"setDate",null, null);
+        System.out.println("update: "+t.toString());
         return baseMapper.updateByPrimaryKey(t);
     }
 
@@ -57,11 +68,6 @@ public class BaseServiceImpl<T,ID> implements BaseService<T,ID> {
     @Override
     public PageVo<T> findPage() {
         return setPageVo(baseMapper.selectByExample(null));
-    }
-
-    @Override
-    public PageVo<T> findPage(Object example) {
-        return setPageVo(baseMapper.selectByExample(example));
     }
 
     @Override
