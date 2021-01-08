@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chen.cn.mapper.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.chen.cn.entity.Order">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="cart_id" jdbcType="BIGINT" property="cartId" />
+    <result column="order_type" jdbcType="VARCHAR" property="orderType" />
+    <result column="order_payment" jdbcType="VARCHAR" property="orderPayment" />
+    <result column="business_type" jdbcType="VARCHAR" property="businessType" />
+    <result column="order_action" jdbcType="VARCHAR" property="orderAction" />
+    <result column="delivery_way" jdbcType="VARCHAR" property="deliveryWay" />
+    <result column="order_mode" jdbcType="VARCHAR" property="orderMode" />
+    <result column="check_mode" jdbcType="VARCHAR" property="checkMode" />
+    <result column="post_id" jdbcType="BIGINT" property="postId" />
+    <result column="delivery_money" jdbcType="DOUBLE" property="deliveryMoney" />
+    <result column="delivery_address" jdbcType="VARCHAR" property="deliveryAddress" />
+    <result column="refuse_time" jdbcType="TIMESTAMP" property="refuseTime" />
+    <result column="refuse_reason" jdbcType="VARCHAR" property="refuseReason" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="delivery_time" jdbcType="TIMESTAMP" property="deliveryTime" />
+    <result column="remitter" jdbcType="VARCHAR" property="remitter" />
+    <result column="receiver" jdbcType="VARCHAR" property="receiver" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="postcode" jdbcType="VARCHAR" property="postcode" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_id" jdbcType="BIGINT" property="updateId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, cart_id, order_type, order_payment, business_type, order_action, delivery_way, 
+    order_mode, check_mode, post_id, delivery_money, delivery_address, refuse_time, refuse_reason, 
+    description, delivery_time, remitter, receiver, phone, postcode, create_time, create_id, 
+    update_time, update_id
+  </sql>
+  <select id="selectByExample" parameterType="com.chen.cn.entity.OrderExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from s_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from s_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from s_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chen.cn.entity.OrderExample">
+    delete from s_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chen.cn.entity.Order">
+    insert into s_order (id, cart_id, order_type, 
+      order_payment, business_type, order_action, 
+      delivery_way, order_mode, check_mode, 
+      post_id, delivery_money, delivery_address, 
+      refuse_time, refuse_reason, description, 
+      delivery_time, remitter, receiver, 
+      phone, postcode, create_time, 
+      create_id, update_time, update_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{cartId,jdbcType=BIGINT}, #{orderType,jdbcType=VARCHAR}, 
+      #{orderPayment,jdbcType=VARCHAR}, #{businessType,jdbcType=VARCHAR}, #{orderAction,jdbcType=VARCHAR}, 
+      #{deliveryWay,jdbcType=VARCHAR}, #{orderMode,jdbcType=VARCHAR}, #{checkMode,jdbcType=VARCHAR}, 
+      #{postId,jdbcType=BIGINT}, #{deliveryMoney,jdbcType=DOUBLE}, #{deliveryAddress,jdbcType=VARCHAR}, 
+      #{refuseTime,jdbcType=TIMESTAMP}, #{refuseReason,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{deliveryTime,jdbcType=TIMESTAMP}, #{remitter,jdbcType=VARCHAR}, #{receiver,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{postcode,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createId,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}, #{updateId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chen.cn.entity.Order">
+    insert into s_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="cartId != null">
+        cart_id,
+      </if>
+      <if test="orderType != null">
+        order_type,
+      </if>
+      <if test="orderPayment != null">
+        order_payment,
+      </if>
+      <if test="businessType != null">
+        business_type,
+      </if>
+      <if test="orderAction != null">
+        order_action,
+      </if>
+      <if test="deliveryWay != null">
+        delivery_way,
+      </if>
+      <if test="orderMode != null">
+        order_mode,
+      </if>
+      <if test="checkMode != null">
+        check_mode,
+      </if>
+      <if test="postId != null">
+        post_id,
+      </if>
+      <if test="deliveryMoney != null">
+        delivery_money,
+      </if>
+      <if test="deliveryAddress != null">
+        delivery_address,
+      </if>
+      <if test="refuseTime != null">
+        refuse_time,
+      </if>
+      <if test="refuseReason != null">
+        refuse_reason,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="deliveryTime != null">
+        delivery_time,
+      </if>
+      <if test="remitter != null">
+        remitter,
+      </if>
+      <if test="receiver != null">
+        receiver,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="postcode != null">
+        postcode,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createId != null">
+        create_id,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateId != null">
+        update_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="cartId != null">
+        #{cartId,jdbcType=BIGINT},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPayment != null">
+        #{orderPayment,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null">
+        #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAction != null">
+        #{orderAction,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryWay != null">
+        #{deliveryWay,jdbcType=VARCHAR},
+      </if>
+      <if test="orderMode != null">
+        #{orderMode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkMode != null">
+        #{checkMode,jdbcType=VARCHAR},
+      </if>
+      <if test="postId != null">
+        #{postId,jdbcType=BIGINT},
+      </if>
+      <if test="deliveryMoney != null">
+        #{deliveryMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="deliveryAddress != null">
+        #{deliveryAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="refuseTime != null">
+        #{refuseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="refuseReason != null">
+        #{refuseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryTime != null">
+        #{deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remitter != null">
+        #{remitter,jdbcType=VARCHAR},
+      </if>
+      <if test="receiver != null">
+        #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null">
+        #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null">
+        #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateId != null">
+        #{updateId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chen.cn.entity.OrderExample" resultType="java.lang.Long">
+    select count(*) from s_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update s_order
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.cartId != null">
+        cart_id = #{record.cartId,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderType != null">
+        order_type = #{record.orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderPayment != null">
+        order_payment = #{record.orderPayment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessType != null">
+        business_type = #{record.businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderAction != null">
+        order_action = #{record.orderAction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deliveryWay != null">
+        delivery_way = #{record.deliveryWay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderMode != null">
+        order_mode = #{record.orderMode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkMode != null">
+        check_mode = #{record.checkMode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postId != null">
+        post_id = #{record.postId,jdbcType=BIGINT},
+      </if>
+      <if test="record.deliveryMoney != null">
+        delivery_money = #{record.deliveryMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.deliveryAddress != null">
+        delivery_address = #{record.deliveryAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refuseTime != null">
+        refuse_time = #{record.refuseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.refuseReason != null">
+        refuse_reason = #{record.refuseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deliveryTime != null">
+        delivery_time = #{record.deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.remitter != null">
+        remitter = #{record.remitter,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiver != null">
+        receiver = #{record.receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postcode != null">
+        postcode = #{record.postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createId != null">
+        create_id = #{record.createId,jdbcType=BIGINT},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateId != null">
+        update_id = #{record.updateId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update s_order
+    set id = #{record.id,jdbcType=BIGINT},
+      cart_id = #{record.cartId,jdbcType=BIGINT},
+      order_type = #{record.orderType,jdbcType=VARCHAR},
+      order_payment = #{record.orderPayment,jdbcType=VARCHAR},
+      business_type = #{record.businessType,jdbcType=VARCHAR},
+      order_action = #{record.orderAction,jdbcType=VARCHAR},
+      delivery_way = #{record.deliveryWay,jdbcType=VARCHAR},
+      order_mode = #{record.orderMode,jdbcType=VARCHAR},
+      check_mode = #{record.checkMode,jdbcType=VARCHAR},
+      post_id = #{record.postId,jdbcType=BIGINT},
+      delivery_money = #{record.deliveryMoney,jdbcType=DOUBLE},
+      delivery_address = #{record.deliveryAddress,jdbcType=VARCHAR},
+      refuse_time = #{record.refuseTime,jdbcType=TIMESTAMP},
+      refuse_reason = #{record.refuseReason,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
+      delivery_time = #{record.deliveryTime,jdbcType=TIMESTAMP},
+      remitter = #{record.remitter,jdbcType=VARCHAR},
+      receiver = #{record.receiver,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      postcode = #{record.postcode,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      create_id = #{record.createId,jdbcType=BIGINT},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      update_id = #{record.updateId,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chen.cn.entity.Order">
+    update s_order
+    <set>
+      <if test="cartId != null">
+        cart_id = #{cartId,jdbcType=BIGINT},
+      </if>
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPayment != null">
+        order_payment = #{orderPayment,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null">
+        business_type = #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAction != null">
+        order_action = #{orderAction,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryWay != null">
+        delivery_way = #{deliveryWay,jdbcType=VARCHAR},
+      </if>
+      <if test="orderMode != null">
+        order_mode = #{orderMode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkMode != null">
+        check_mode = #{checkMode,jdbcType=VARCHAR},
+      </if>
+      <if test="postId != null">
+        post_id = #{postId,jdbcType=BIGINT},
+      </if>
+      <if test="deliveryMoney != null">
+        delivery_money = #{deliveryMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="deliveryAddress != null">
+        delivery_address = #{deliveryAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="refuseTime != null">
+        refuse_time = #{refuseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="refuseReason != null">
+        refuse_reason = #{refuseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryTime != null">
+        delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remitter != null">
+        remitter = #{remitter,jdbcType=VARCHAR},
+      </if>
+      <if test="receiver != null">
+        receiver = #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null">
+        postcode = #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null">
+        create_id = #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateId != null">
+        update_id = #{updateId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chen.cn.entity.Order">
+    update s_order
+    set cart_id = #{cartId,jdbcType=BIGINT},
+      order_type = #{orderType,jdbcType=VARCHAR},
+      order_payment = #{orderPayment,jdbcType=VARCHAR},
+      business_type = #{businessType,jdbcType=VARCHAR},
+      order_action = #{orderAction,jdbcType=VARCHAR},
+      delivery_way = #{deliveryWay,jdbcType=VARCHAR},
+      order_mode = #{orderMode,jdbcType=VARCHAR},
+      check_mode = #{checkMode,jdbcType=VARCHAR},
+      post_id = #{postId,jdbcType=BIGINT},
+      delivery_money = #{deliveryMoney,jdbcType=DOUBLE},
+      delivery_address = #{deliveryAddress,jdbcType=VARCHAR},
+      refuse_time = #{refuseTime,jdbcType=TIMESTAMP},
+      refuse_reason = #{refuseReason,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+      remitter = #{remitter,jdbcType=VARCHAR},
+      receiver = #{receiver,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      postcode = #{postcode,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_id = #{createId,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_id = #{updateId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
