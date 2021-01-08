@@ -1,7 +1,7 @@
 package com.chen.cn.service;
 
 import com.chen.cn.dto.SearchOrderDto;
-import com.chen.cn.entity.Order;
+import com.chen.cn.entity.b2csale.Order;
 import com.chen.cn.vo.PageVo;
 
 /**
@@ -18,4 +18,5 @@ public interface OrderService extends BaseService<Order,Long>{
      * @return
      */
     PageVo<Order> onSearch(SearchOrderDto searchOrderDto);
+
 }

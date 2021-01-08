@@ -1,4 +1,4 @@
-package com.chen.cn.entity;
+package com.chen.cn.entity.b2csale;
 
 import java.util.ArrayList;
 import java.util.Date;

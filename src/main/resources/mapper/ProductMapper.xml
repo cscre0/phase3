@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chen.cn.mapper.ProductMapper">
-  <resultMap id="BaseResultMap" type="com.chen.cn.entity.Product">
+  <resultMap id="BaseResultMap" type="com.chen.cn.entity.b2csale.Product">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="price" jdbcType="DOUBLE" property="price" />
@@ -73,7 +73,7 @@
   <sql id="Base_Column_List">
     id, name, price, img, desc, create_time, create_id, update_time, update_id
   </sql>
-  <select id="selectByExample" parameterType="com.chen.cn.entity.ProductExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.chen.cn.entity.b2csale.ProductExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -97,13 +97,13 @@
     delete from product
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.chen.cn.entity.ProductExample">
+  <delete id="deleteByExample" parameterType="com.chen.cn.entity.b2csale.ProductExample">
     delete from product
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.chen.cn.entity.Product">
+  <insert id="insert" parameterType="com.chen.cn.entity.b2csale.Product">
     insert into product (id, name, price, 
       img, desc, create_time, 
       create_id, update_time, update_id
@@ -113,7 +113,7 @@
       #{createId,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}, #{updateId,jdbcType=BIGINT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.chen.cn.entity.Product">
+  <insert id="insertSelective" parameterType="com.chen.cn.entity.b2csale.Product">
     insert into product
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -174,7 +174,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.chen.cn.entity.ProductExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.chen.cn.entity.b2csale.ProductExample" resultType="java.lang.Long">
     select count(*) from product
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -230,7 +230,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.chen.cn.entity.Product">
+  <update id="updateByPrimaryKeySelective" parameterType="com.chen.cn.entity.b2csale.Product">
     update product
     <set>
       <if test="name != null">
@@ -260,7 +260,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.chen.cn.entity.Product">
+  <update id="updateByPrimaryKey" parameterType="com.chen.cn.entity.b2csale.Product">
     update product
     set name = #{name,jdbcType=VARCHAR},
       price = #{price,jdbcType=DOUBLE},

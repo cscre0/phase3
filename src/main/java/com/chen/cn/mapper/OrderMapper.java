@@ -1,10 +1,6 @@
 package com.chen.cn.mapper;
 
-import com.chen.cn.entity.Order;
-import com.chen.cn.entity.OrderExample;
-import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
+import com.chen.cn.entity.b2csale.Order;
 
 public interface OrderMapper extends BaseMapper<Order,Long>{
 

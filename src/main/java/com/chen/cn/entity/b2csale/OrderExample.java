@@ -1,4 +1,4 @@
-package com.chen.cn.entity;
+package com.chen.cn.entity.b2csale;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -1442,6 +1442,126 @@ public class OrderExample {
 
         public Criteria andPostcodeNotBetween(String value1, String value2) {
             addCriterion("postcode not between", value1, value2, "postcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartNumIsNull() {
+            addCriterion("cart_num is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartNumIsNotNull() {
+            addCriterion("cart_num is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartNumEqualTo(Integer value) {
+            addCriterion("cart_num =", value, "cartNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartNumNotEqualTo(Integer value) {
+            addCriterion("cart_num <>", value, "cartNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartNumGreaterThan(Integer value) {
+            addCriterion("cart_num >", value, "cartNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartNumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("cart_num >=", value, "cartNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartNumLessThan(Integer value) {
+            addCriterion("cart_num <", value, "cartNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartNumLessThanOrEqualTo(Integer value) {
+            addCriterion("cart_num <=", value, "cartNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartNumIn(List<Integer> values) {
+            addCriterion("cart_num in", values, "cartNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartNumNotIn(List<Integer> values) {
+            addCriterion("cart_num not in", values, "cartNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartNumBetween(Integer value1, Integer value2) {
+            addCriterion("cart_num between", value1, value2, "cartNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartNumNotBetween(Integer value1, Integer value2) {
+            addCriterion("cart_num not between", value1, value2, "cartNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartMoneyIsNull() {
+            addCriterion("cart_money is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartMoneyIsNotNull() {
+            addCriterion("cart_money is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartMoneyEqualTo(Double value) {
+            addCriterion("cart_money =", value, "cartMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartMoneyNotEqualTo(Double value) {
+            addCriterion("cart_money <>", value, "cartMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartMoneyGreaterThan(Double value) {
+            addCriterion("cart_money >", value, "cartMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartMoneyGreaterThanOrEqualTo(Double value) {
+            addCriterion("cart_money >=", value, "cartMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartMoneyLessThan(Double value) {
+            addCriterion("cart_money <", value, "cartMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartMoneyLessThanOrEqualTo(Double value) {
+            addCriterion("cart_money <=", value, "cartMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartMoneyIn(List<Double> values) {
+            addCriterion("cart_money in", values, "cartMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartMoneyNotIn(List<Double> values) {
+            addCriterion("cart_money not in", values, "cartMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartMoneyBetween(Double value1, Double value2) {
+            addCriterion("cart_money between", value1, value2, "cartMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andCartMoneyNotBetween(Double value1, Double value2) {
+            addCriterion("cart_money not between", value1, value2, "cartMoney");
             return (Criteria) this;
         }
 

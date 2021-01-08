@@ -1,6 +1,6 @@
 package com.chen.cn.vo;
 
-import com.chen.cn.entity.Product;
+import com.chen.cn.entity.b2csale.Product;
 import lombok.Data;
 
 /**

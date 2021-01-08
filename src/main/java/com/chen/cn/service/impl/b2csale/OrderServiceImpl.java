@@ -1,10 +1,11 @@
-package com.chen.cn.service.impl;
+package com.chen.cn.service.impl.b2csale;
 
 import com.chen.cn.dto.SearchOrderDto;
-import com.chen.cn.entity.Order;
-import com.chen.cn.entity.OrderExample;
+import com.chen.cn.entity.b2csale.Order;
+import com.chen.cn.entity.b2csale.OrderExample;
 import com.chen.cn.mapper.OrderMapper;
 import com.chen.cn.service.OrderService;
+import com.chen.cn.service.impl.BaseServiceImpl;
 import com.chen.cn.vo.PageVo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;

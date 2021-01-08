@@ -1,11 +1,10 @@
-package com.chen.cn.entity;
+package com.chen.cn.entity.b2csale;
 
+import com.chen.cn.entity.BaseEntity;
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
-public class Product extends BaseEntity{
+public class Product extends BaseEntity {
 
     private String name;
 

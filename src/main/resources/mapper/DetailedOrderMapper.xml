@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chen.cn.mapper.DetailedOrderMapper">
-  <resultMap id="BaseResultMap" type="com.chen.cn.entity.DetailedOrder">
+  <resultMap id="BaseResultMap" type="com.chen.cn.entity.b2csale.DetailedOrder">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="order_id" jdbcType="BIGINT" property="orderId" />
     <result column="check_id" jdbcType="BIGINT" property="checkId" />
     <result column="check_time" jdbcType="TIMESTAMP" property="checkTime" />
     <result column="check_mode" jdbcType="VARCHAR" property="checkMode" />
     <result column="check_suggestion" jdbcType="VARCHAR" property="checkSuggestion" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="product_num" jdbcType="INTEGER" property="productNum" />
+    <result column="product_money" jdbcType="DOUBLE" property="productMoney" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="create_id" jdbcType="BIGINT" property="createId" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
@@ -72,10 +75,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, order_id, check_id, check_time, check_mode, check_suggestion, create_time, create_id, 
-    update_time, update_id
+    id, order_id, check_id, check_time, check_mode, check_suggestion, product_id, product_num, 
+    product_money, create_time, create_id, update_time, update_id
   </sql>
-  <select id="selectByExample" parameterType="com.chen.cn.entity.DetailedOrderExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.chen.cn.entity.b2csale.DetailedOrderExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -99,23 +102,25 @@
     delete from detailed_order
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.chen.cn.entity.DetailedOrderExample">
+  <delete id="deleteByExample" parameterType="com.chen.cn.entity.b2csale.DetailedOrderExample">
     delete from detailed_order
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.chen.cn.entity.DetailedOrder">
+  <insert id="insert" parameterType="com.chen.cn.entity.b2csale.DetailedOrder">
     insert into detailed_order (id, order_id, check_id, 
       check_time, check_mode, check_suggestion, 
+      product_id, product_num, product_money, 
       create_time, create_id, update_time, 
       update_id)
     values (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{checkId,jdbcType=BIGINT}, 
       #{checkTime,jdbcType=TIMESTAMP}, #{checkMode,jdbcType=VARCHAR}, #{checkSuggestion,jdbcType=VARCHAR}, 
+      #{productId,jdbcType=BIGINT}, #{productNum,jdbcType=INTEGER}, #{productMoney,jdbcType=DOUBLE}, 
       #{createTime,jdbcType=TIMESTAMP}, #{createId,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{updateId,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.chen.cn.entity.DetailedOrder">
+  <insert id="insertSelective" parameterType="com.chen.cn.entity.b2csale.DetailedOrder">
     insert into detailed_order
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -135,6 +140,15 @@
       </if>
       <if test="checkSuggestion != null">
         check_suggestion,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="productNum != null">
+        product_num,
+      </if>
+      <if test="productMoney != null">
+        product_money,
       </if>
       <if test="createTime != null">
         create_time,
@@ -168,6 +182,15 @@
       <if test="checkSuggestion != null">
         #{checkSuggestion,jdbcType=VARCHAR},
       </if>
+      <if test="productId != null">
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="productNum != null">
+        #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="productMoney != null">
+        #{productMoney,jdbcType=DOUBLE},
+      </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -182,7 +205,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.chen.cn.entity.DetailedOrderExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.chen.cn.entity.b2csale.DetailedOrderExample" resultType="java.lang.Long">
     select count(*) from detailed_order
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -209,6 +232,15 @@
       <if test="record.checkSuggestion != null">
         check_suggestion = #{record.checkSuggestion,jdbcType=VARCHAR},
       </if>
+      <if test="record.productId != null">
+        product_id = #{record.productId,jdbcType=BIGINT},
+      </if>
+      <if test="record.productNum != null">
+        product_num = #{record.productNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.productMoney != null">
+        product_money = #{record.productMoney,jdbcType=DOUBLE},
+      </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
@@ -234,6 +266,9 @@
       check_time = #{record.checkTime,jdbcType=TIMESTAMP},
       check_mode = #{record.checkMode,jdbcType=VARCHAR},
       check_suggestion = #{record.checkSuggestion,jdbcType=VARCHAR},
+      product_id = #{record.productId,jdbcType=BIGINT},
+      product_num = #{record.productNum,jdbcType=INTEGER},
+      product_money = #{record.productMoney,jdbcType=DOUBLE},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       create_id = #{record.createId,jdbcType=BIGINT},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
@@ -242,7 +277,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.chen.cn.entity.DetailedOrder">
+  <update id="updateByPrimaryKeySelective" parameterType="com.chen.cn.entity.b2csale.DetailedOrder">
     update detailed_order
     <set>
       <if test="orderId != null">
@@ -260,6 +295,15 @@
       <if test="checkSuggestion != null">
         check_suggestion = #{checkSuggestion,jdbcType=VARCHAR},
       </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="productNum != null">
+        product_num = #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="productMoney != null">
+        product_money = #{productMoney,jdbcType=DOUBLE},
+      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -275,13 +319,16 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.chen.cn.entity.DetailedOrder">
+  <update id="updateByPrimaryKey" parameterType="com.chen.cn.entity.b2csale.DetailedOrder">
     update detailed_order
     set order_id = #{orderId,jdbcType=BIGINT},
       check_id = #{checkId,jdbcType=BIGINT},
       check_time = #{checkTime,jdbcType=TIMESTAMP},
       check_mode = #{checkMode,jdbcType=VARCHAR},
       check_suggestion = #{checkSuggestion,jdbcType=VARCHAR},
+      product_id = #{productId,jdbcType=BIGINT},
+      product_num = #{productNum,jdbcType=INTEGER},
+      product_money = #{productMoney,jdbcType=DOUBLE},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       create_id = #{createId,jdbcType=BIGINT},
       update_time = #{updateTime,jdbcType=TIMESTAMP},

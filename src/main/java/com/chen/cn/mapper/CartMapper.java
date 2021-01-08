@@ -1,10 +1,6 @@
 package com.chen.cn.mapper;
 
-import com.chen.cn.entity.Cart;
-import com.chen.cn.entity.CartExample;
-import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
+import com.chen.cn.entity.b2csale.Cart;
 
 public interface CartMapper extends BaseMapper<Cart,Long>{
 

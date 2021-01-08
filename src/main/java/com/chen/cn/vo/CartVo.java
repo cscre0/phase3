@@ -1,7 +1,6 @@
 package com.chen.cn.vo;
 
-import com.chen.cn.entity.Cart;
-import com.chen.cn.entity.CartItem;
+import com.chen.cn.entity.b2csale.Cart;
 import lombok.Data;
 
 import java.util.List;

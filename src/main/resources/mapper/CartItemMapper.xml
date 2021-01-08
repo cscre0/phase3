@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chen.cn.mapper.CartItemMapper">
-  <resultMap id="BaseResultMap" type="com.chen.cn.entity.CartItem">
+  <resultMap id="BaseResultMap" type="com.chen.cn.entity.b2csale.CartItem">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="cart_id" jdbcType="BIGINT" property="cartId" />
     <result column="product_id" jdbcType="BIGINT" property="productId" />
@@ -74,7 +74,7 @@
     id, cart_id, product_id, product_num, product_money, create_time, create_id, update_time, 
     update_id
   </sql>
-  <select id="selectByExample" parameterType="com.chen.cn.entity.CartItemExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.chen.cn.entity.b2csale.CartItemExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -98,13 +98,13 @@
     delete from cart_item
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.chen.cn.entity.CartItemExample">
+  <delete id="deleteByExample" parameterType="com.chen.cn.entity.b2csale.CartItemExample">
     delete from cart_item
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.chen.cn.entity.CartItem">
+  <insert id="insert" parameterType="com.chen.cn.entity.b2csale.CartItem">
     insert into cart_item (id, cart_id, product_id, 
       product_num, product_money, create_time, 
       create_id, update_time, update_id
@@ -114,7 +114,7 @@
       #{createId,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}, #{updateId,jdbcType=BIGINT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.chen.cn.entity.CartItem">
+  <insert id="insertSelective" parameterType="com.chen.cn.entity.b2csale.CartItem">
     insert into cart_item
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -175,7 +175,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.chen.cn.entity.CartItemExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.chen.cn.entity.b2csale.CartItemExample" resultType="java.lang.Long">
     select count(*) from cart_item
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -231,7 +231,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.chen.cn.entity.CartItem">
+  <update id="updateByPrimaryKeySelective" parameterType="com.chen.cn.entity.b2csale.CartItem">
     update cart_item
     <set>
       <if test="cartId != null">
@@ -261,7 +261,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.chen.cn.entity.CartItem">
+  <update id="updateByPrimaryKey" parameterType="com.chen.cn.entity.b2csale.CartItem">
     update cart_item
     set cart_id = #{cartId,jdbcType=BIGINT},
       product_id = #{productId,jdbcType=BIGINT},

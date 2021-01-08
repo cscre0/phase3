@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chen.cn.mapper.OrderMapper">
-  <resultMap id="BaseResultMap" type="com.chen.cn.entity.Order">
+  <resultMap id="BaseResultMap" type="com.chen.cn.entity.b2csale.Order">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="cart_id" jdbcType="BIGINT" property="cartId" />
     <result column="order_type" jdbcType="VARCHAR" property="orderType" />
@@ -22,6 +22,8 @@
     <result column="receiver" jdbcType="VARCHAR" property="receiver" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="postcode" jdbcType="VARCHAR" property="postcode" />
+    <result column="cart_num" jdbcType="INTEGER" property="cartNum" />
+    <result column="cart_money" jdbcType="DOUBLE" property="cartMoney" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="create_id" jdbcType="BIGINT" property="createId" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
@@ -88,10 +90,10 @@
   <sql id="Base_Column_List">
     id, cart_id, order_type, order_payment, business_type, order_action, delivery_way, 
     order_mode, check_mode, post_id, delivery_money, delivery_address, refuse_time, refuse_reason, 
-    description, delivery_time, remitter, receiver, phone, postcode, create_time, create_id, 
-    update_time, update_id
+    description, delivery_time, remitter, receiver, phone, postcode, cart_num, cart_money, 
+    create_time, create_id, update_time, update_id
   </sql>
-  <select id="selectByExample" parameterType="com.chen.cn.entity.OrderExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.chen.cn.entity.b2csale.OrderExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -115,33 +117,33 @@
     delete from s_order
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.chen.cn.entity.OrderExample">
+  <delete id="deleteByExample" parameterType="com.chen.cn.entity.b2csale.OrderExample">
     delete from s_order
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.chen.cn.entity.Order">
+  <insert id="insert" parameterType="com.chen.cn.entity.b2csale.Order">
     insert into s_order (id, cart_id, order_type, 
       order_payment, business_type, order_action, 
       delivery_way, order_mode, check_mode, 
       post_id, delivery_money, delivery_address, 
       refuse_time, refuse_reason, description, 
       delivery_time, remitter, receiver, 
-      phone, postcode, create_time, 
-      create_id, update_time, update_id
-      )
+      phone, postcode, cart_num, 
+      cart_money, create_time, create_id, 
+      update_time, update_id)
     values (#{id,jdbcType=BIGINT}, #{cartId,jdbcType=BIGINT}, #{orderType,jdbcType=VARCHAR}, 
       #{orderPayment,jdbcType=VARCHAR}, #{businessType,jdbcType=VARCHAR}, #{orderAction,jdbcType=VARCHAR}, 
       #{deliveryWay,jdbcType=VARCHAR}, #{orderMode,jdbcType=VARCHAR}, #{checkMode,jdbcType=VARCHAR}, 
       #{postId,jdbcType=BIGINT}, #{deliveryMoney,jdbcType=DOUBLE}, #{deliveryAddress,jdbcType=VARCHAR}, 
       #{refuseTime,jdbcType=TIMESTAMP}, #{refuseReason,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
       #{deliveryTime,jdbcType=TIMESTAMP}, #{remitter,jdbcType=VARCHAR}, #{receiver,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{postcode,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{createId,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}, #{updateId,jdbcType=BIGINT}
-      )
+      #{phone,jdbcType=VARCHAR}, #{postcode,jdbcType=VARCHAR}, #{cartNum,jdbcType=INTEGER}, 
+      #{cartMoney,jdbcType=DOUBLE}, #{createTime,jdbcType=TIMESTAMP}, #{createId,jdbcType=BIGINT}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateId,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.chen.cn.entity.Order">
+  <insert id="insertSelective" parameterType="com.chen.cn.entity.b2csale.Order">
     insert into s_order
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -203,6 +205,12 @@
       </if>
       <if test="postcode != null">
         postcode,
+      </if>
+      <if test="cartNum != null">
+        cart_num,
+      </if>
+      <if test="cartMoney != null">
+        cart_money,
       </if>
       <if test="createTime != null">
         create_time,
@@ -278,6 +286,12 @@
       <if test="postcode != null">
         #{postcode,jdbcType=VARCHAR},
       </if>
+      <if test="cartNum != null">
+        #{cartNum,jdbcType=INTEGER},
+      </if>
+      <if test="cartMoney != null">
+        #{cartMoney,jdbcType=DOUBLE},
+      </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -292,7 +306,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.chen.cn.entity.OrderExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.chen.cn.entity.b2csale.OrderExample" resultType="java.lang.Long">
     select count(*) from s_order
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -361,6 +375,12 @@
       <if test="record.postcode != null">
         postcode = #{record.postcode,jdbcType=VARCHAR},
       </if>
+      <if test="record.cartNum != null">
+        cart_num = #{record.cartNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.cartMoney != null">
+        cart_money = #{record.cartMoney,jdbcType=DOUBLE},
+      </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
@@ -400,6 +420,8 @@
       receiver = #{record.receiver,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
       postcode = #{record.postcode,jdbcType=VARCHAR},
+      cart_num = #{record.cartNum,jdbcType=INTEGER},
+      cart_money = #{record.cartMoney,jdbcType=DOUBLE},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       create_id = #{record.createId,jdbcType=BIGINT},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
@@ -408,7 +430,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.chen.cn.entity.Order">
+  <update id="updateByPrimaryKeySelective" parameterType="com.chen.cn.entity.b2csale.Order">
     update s_order
     <set>
       <if test="cartId != null">
@@ -468,6 +490,12 @@
       <if test="postcode != null">
         postcode = #{postcode,jdbcType=VARCHAR},
       </if>
+      <if test="cartNum != null">
+        cart_num = #{cartNum,jdbcType=INTEGER},
+      </if>
+      <if test="cartMoney != null">
+        cart_money = #{cartMoney,jdbcType=DOUBLE},
+      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -483,7 +511,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.chen.cn.entity.Order">
+  <update id="updateByPrimaryKey" parameterType="com.chen.cn.entity.b2csale.Order">
     update s_order
     set cart_id = #{cartId,jdbcType=BIGINT},
       order_type = #{orderType,jdbcType=VARCHAR},
@@ -504,6 +532,8 @@
       receiver = #{receiver,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       postcode = #{postcode,jdbcType=VARCHAR},
+      cart_num = #{cartNum,jdbcType=INTEGER},
+      cart_money = #{cartMoney,jdbcType=DOUBLE},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       create_id = #{createId,jdbcType=BIGINT},
       update_time = #{updateTime,jdbcType=TIMESTAMP},

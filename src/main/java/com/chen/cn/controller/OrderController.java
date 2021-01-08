@@ -2,7 +2,7 @@ package com.chen.cn.controller;
 
 import com.chen.cn.dto.AxiosResult;
 import com.chen.cn.dto.SearchOrderDto;
-import com.chen.cn.entity.Order;
+import com.chen.cn.entity.b2csale.Order;
 import com.chen.cn.service.OrderService;
 import com.chen.cn.vo.PageVo;
 import com.github.pagehelper.PageHelper;

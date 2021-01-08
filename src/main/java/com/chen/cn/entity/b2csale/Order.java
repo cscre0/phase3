@@ -1,11 +1,12 @@
-package com.chen.cn.entity;
+package com.chen.cn.entity.b2csale;
 
+import com.chen.cn.entity.BaseEntity;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
-public class Order extends BaseEntity{
+public class Order extends BaseEntity {
 
     private Long cartId;
 
@@ -44,5 +45,9 @@ public class Order extends BaseEntity{
     private String phone;
 
     private String postcode;
+
+    private Integer cartNum;
+
+    private Double cartMoney;
 
 }
