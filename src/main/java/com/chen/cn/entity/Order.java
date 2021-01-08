@@ -7,6 +7,8 @@ import java.util.Date;
 @Data
 public class Order extends BaseEntity{
 
+    private Long cartId;
+
     private String orderType;
 
     private String orderPayment;
@@ -31,8 +33,16 @@ public class Order extends BaseEntity{
 
     private String refuseReason;
 
-    private String description ;
+    private String description;
 
     private Date deliveryTime;
+
+    private String remitter;
+
+    private String receiver;
+
+    private Integer phoneNumber;
+
+    private Integer postcode;
 
 }

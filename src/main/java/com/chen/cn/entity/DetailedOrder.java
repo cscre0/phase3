@@ -9,10 +9,6 @@ public class DetailedOrder extends BaseEntity{
 
     private Long orderId;
 
-    private Long customerId;
-
-    private Long cartId;
-
     private Long checkId;
 
     private Date checkTime;
