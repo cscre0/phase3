@@ -41,8 +41,8 @@ public class Order extends BaseEntity{
 
     private String receiver;
 
-    private Integer phoneNumber;
+    private String phone;
 
-    private Integer postcode;
+    private String postcode;
 
 }

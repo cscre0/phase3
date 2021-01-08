@@ -1305,63 +1305,73 @@ public class OrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andPhoneNumberIsNull() {
-            addCriterion("phone_number is null");
+        public Criteria andPhoneIsNull() {
+            addCriterion("phone is null");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneNumberIsNotNull() {
-            addCriterion("phone_number is not null");
+        public Criteria andPhoneIsNotNull() {
+            addCriterion("phone is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneNumberEqualTo(Integer value) {
-            addCriterion("phone_number =", value, "phoneNumber");
+        public Criteria andPhoneEqualTo(String value) {
+            addCriterion("phone =", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneNumberNotEqualTo(Integer value) {
-            addCriterion("phone_number <>", value, "phoneNumber");
+        public Criteria andPhoneNotEqualTo(String value) {
+            addCriterion("phone <>", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneNumberGreaterThan(Integer value) {
-            addCriterion("phone_number >", value, "phoneNumber");
+        public Criteria andPhoneGreaterThan(String value) {
+            addCriterion("phone >", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneNumberGreaterThanOrEqualTo(Integer value) {
-            addCriterion("phone_number >=", value, "phoneNumber");
+        public Criteria andPhoneGreaterThanOrEqualTo(String value) {
+            addCriterion("phone >=", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneNumberLessThan(Integer value) {
-            addCriterion("phone_number <", value, "phoneNumber");
+        public Criteria andPhoneLessThan(String value) {
+            addCriterion("phone <", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneNumberLessThanOrEqualTo(Integer value) {
-            addCriterion("phone_number <=", value, "phoneNumber");
+        public Criteria andPhoneLessThanOrEqualTo(String value) {
+            addCriterion("phone <=", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneNumberIn(List<Integer> values) {
-            addCriterion("phone_number in", values, "phoneNumber");
+        public Criteria andPhoneLike(String value) {
+            addCriterion("phone like", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneNumberNotIn(List<Integer> values) {
-            addCriterion("phone_number not in", values, "phoneNumber");
+        public Criteria andPhoneNotLike(String value) {
+            addCriterion("phone not like", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneNumberBetween(Integer value1, Integer value2) {
-            addCriterion("phone_number between", value1, value2, "phoneNumber");
+        public Criteria andPhoneIn(List<String> values) {
+            addCriterion("phone in", values, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneNumberNotBetween(Integer value1, Integer value2) {
-            addCriterion("phone_number not between", value1, value2, "phoneNumber");
+        public Criteria andPhoneNotIn(List<String> values) {
+            addCriterion("phone not in", values, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneBetween(String value1, String value2) {
+            addCriterion("phone between", value1, value2, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneNotBetween(String value1, String value2) {
+            addCriterion("phone not between", value1, value2, "phone");
             return (Criteria) this;
         }
 
@@ -1375,52 +1385,62 @@ public class OrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andPostcodeEqualTo(Integer value) {
+        public Criteria andPostcodeEqualTo(String value) {
             addCriterion("postcode =", value, "postcode");
             return (Criteria) this;
         }
 
-        public Criteria andPostcodeNotEqualTo(Integer value) {
+        public Criteria andPostcodeNotEqualTo(String value) {
             addCriterion("postcode <>", value, "postcode");
             return (Criteria) this;
         }
 
-        public Criteria andPostcodeGreaterThan(Integer value) {
+        public Criteria andPostcodeGreaterThan(String value) {
             addCriterion("postcode >", value, "postcode");
             return (Criteria) this;
         }
 
-        public Criteria andPostcodeGreaterThanOrEqualTo(Integer value) {
+        public Criteria andPostcodeGreaterThanOrEqualTo(String value) {
             addCriterion("postcode >=", value, "postcode");
             return (Criteria) this;
         }
 
-        public Criteria andPostcodeLessThan(Integer value) {
+        public Criteria andPostcodeLessThan(String value) {
             addCriterion("postcode <", value, "postcode");
             return (Criteria) this;
         }
 
-        public Criteria andPostcodeLessThanOrEqualTo(Integer value) {
+        public Criteria andPostcodeLessThanOrEqualTo(String value) {
             addCriterion("postcode <=", value, "postcode");
             return (Criteria) this;
         }
 
-        public Criteria andPostcodeIn(List<Integer> values) {
+        public Criteria andPostcodeLike(String value) {
+            addCriterion("postcode like", value, "postcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostcodeNotLike(String value) {
+            addCriterion("postcode not like", value, "postcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostcodeIn(List<String> values) {
             addCriterion("postcode in", values, "postcode");
             return (Criteria) this;
         }
 
-        public Criteria andPostcodeNotIn(List<Integer> values) {
+        public Criteria andPostcodeNotIn(List<String> values) {
             addCriterion("postcode not in", values, "postcode");
             return (Criteria) this;
         }
 
-        public Criteria andPostcodeBetween(Integer value1, Integer value2) {
+        public Criteria andPostcodeBetween(String value1, String value2) {
             addCriterion("postcode between", value1, value2, "postcode");
             return (Criteria) this;
         }
 
-        public Criteria andPostcodeNotBetween(Integer value1, Integer value2) {
+        public Criteria andPostcodeNotBetween(String value1, String value2) {
             addCriterion("postcode not between", value1, value2, "postcode");
             return (Criteria) this;
         }

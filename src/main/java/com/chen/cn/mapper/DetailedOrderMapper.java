@@ -6,6 +6,6 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface DetailedOrderMapper extends BaseMapper{
+public interface DetailedOrderMapper extends BaseMapper<DetailedOrder,Long>{
 
 }
